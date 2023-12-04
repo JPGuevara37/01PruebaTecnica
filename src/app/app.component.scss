@@ -154,3 +154,21 @@ td {
 }
 
 
+
+
+td.borrar-detalle {
+    cursor: pointer;
+    color: rgb(145, 7, 7);
+    font-weight: bold;
+  
+}
+
+td.borrar-detalle:hover {
+    text-decoration: underline;
+    
+}
+
+td.borrar-detalle:active {
+    color: darkred;
+    
+}

@@ -17,13 +17,18 @@ export class AppComponent implements OnInit {
   mostrarModalFactura: boolean = false;
   mostrarModalLinea: boolean = false;
   nuevoDetalle: any = { producto: '', cantidad: 0 };
-  nuevaFacturaInfo: any = { numero: '', fecha: '' };
+  nuevaFacturaInfo: any = { numero: '', fecha: new Date() };
 
   constructor(private facturacionService: FacturacionService) {}
 
   ngOnInit() {
     //Necesario
   }
+
+  formatearFecha(fecha: Date): string {
+  const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+  return fecha.toLocaleDateString('en-US');
+}
 
   // Métodos que llaman a los servicios y manejan las respuestas
   obtenerFactura(numeroFactura: number, linea?: number) {
@@ -85,11 +90,10 @@ export class AppComponent implements OnInit {
   }
 
   agregarFactura() {
-    if (!this.nuevaFacturaInfo.numero || !this.nuevaFacturaInfo.fecha) {
-      console.error('Por favor, complete todos los campos.');
-      return;
-    }
-    this.facturacionService.crearFactura(this.nuevaFacturaInfo.numero, this.nuevaFacturaInfo.fecha).subscribe({
+
+      const fechaSeleccionada = this.nuevaFacturaInfo.fecha;
+
+        this.facturacionService.crearFactura(this.nuevaFacturaInfo.numero, this.nuevaFacturaInfo.fecha).subscribe({
       next: (data: any) => {
         console.log('Respuesta Crear Factura:', data);
         
@@ -98,7 +102,8 @@ export class AppComponent implements OnInit {
         console.log('Respuesta Obtener Factura:', data);
         this.total = data.FACTURA.TOTAL;
         this.factura = data.FACTURA.NUMERO_FACTURA;
-        this.fecha = data.FACTURA.FECHA;
+        this.fecha = fechaSeleccionada;
+        this.mostrarModalFactura = false;
 
       },
       error: (error) => {

@@ -51,7 +51,6 @@
                     <th>(QTY)</th>
                     <th>Precio</th>
                     <th>Total</th>
-                    <th>BORRAR</th>
                 </tr>
             </thead>
             <tbody>
@@ -61,9 +60,9 @@
                     <td>{{ detalle.cantidad }}</td>
                     <td>{{ detalle.precio | currency }}</td>
                     <td>{{ detalle.total | currency }}</td>
-                    <td (click)="borrarDetalle(detalle, i)" >Borrar</td>
+                    <td class="borrar-detalle" (click)="borrarDetalle(detalle, i)">BORRAR</td>
                 </tr>
             </tbody>
-        </table>
+       </table>
     </div>
 </div>
