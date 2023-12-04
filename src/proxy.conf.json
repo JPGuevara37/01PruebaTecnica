@@ -1,0 +1,7 @@
+{
+    "/test/functions/api.cfc/": {
+        "target": "https://api.cafebritt.com/",
+        "secure": false,
+        "changeOrigin": true
+    }
+}
