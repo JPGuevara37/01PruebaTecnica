@@ -77,9 +77,10 @@ export class AppComponent implements OnInit {
 
       this.facturacionService.borrarDetalle(parseInt(this.factura), dt.LINEA).subscribe((data: any) => {
       console.log('Respuesta Borrar Detalle:', data);
-      this.detalles.splice(index, 1);
       this.total -= dt.PRECIO * dt.CANTIDAD;
-    });
+      this.detalles.splice(index, 1);
+        
+      });
     });
   }
 
