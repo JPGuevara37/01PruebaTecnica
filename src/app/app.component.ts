@@ -19,10 +19,8 @@ export class AppComponent implements OnInit {
   nuevoDetalle: any = { producto: '', cantidad: 0 };
   nuevaFacturaInfo: any = { numero: '', fecha: '' };
 
-  // Inyecta el servicio en el constructor
   constructor(private facturacionService: FacturacionService) {}
 
-  // Método que se ejecuta al inicializar el componente
   ngOnInit() {
     //Necesario
   }
@@ -31,7 +29,6 @@ export class AppComponent implements OnInit {
   obtenerFactura(numeroFactura: number, linea?: number) {
     this.facturacionService.obtenerFactura(numeroFactura, linea).subscribe((data: any) => {
       console.log('Respuesta Obtener Factura:', data);
-      // Lógica adicional si es necesario
     });
   }
 
@@ -69,15 +66,14 @@ export class AppComponent implements OnInit {
   }
 
   borrarDetalle(detalle:any, index:number) {
-    this.facturacionService.obtenerFactura(parseInt(this.factura)).subscribe((data: any) => {
+      this.facturacionService.obtenerFactura(parseInt(this.factura)).subscribe((data: any) => {
       const detalles =  data.DETALLES;
       const dt = detalles.find( (ds:any) => ds.CODIGO_ARTICULO === detalle.sku);
-      // Lógica adicional si es necesario
+
       this.facturacionService.borrarDetalle(parseInt(this.factura), dt.LINEA).subscribe((data: any) => {
       console.log('Respuesta Borrar Detalle:', data);
       this.detalles.splice(index, 1);
       this.total -= dt.PRECIO * dt.CANTIDAD;
-      // Lógica adicional si es necesario
     });
     });
   }
@@ -85,7 +81,6 @@ export class AppComponent implements OnInit {
   crearFactura(numeroFactura: number, fecha: string) {
     this.facturacionService.crearFactura(numeroFactura, fecha).subscribe((data: any) => {
       console.log('Respuesta Crear Factura:', data);
-      // Lógica adicional si es necesario
     });
   }
 
@@ -94,11 +89,9 @@ export class AppComponent implements OnInit {
       console.error('Por favor, complete todos los campos.');
       return;
     }
-    // Llamada al servicio para crear una nueva factura
     this.facturacionService.crearFactura(this.nuevaFacturaInfo.numero, this.nuevaFacturaInfo.fecha).subscribe({
       next: (data: any) => {
         console.log('Respuesta Crear Factura:', data);
-        // Lógica adicional si es necesario
         
         this.facturacionService.obtenerFactura(this.nuevaFacturaInfo.numero).subscribe({
       next: (data: any) => {
@@ -107,7 +100,6 @@ export class AppComponent implements OnInit {
         this.factura = data.FACTURA.NUMERO_FACTURA;
         this.fecha = data.FACTURA.FECHA;
 
-        // Lógica adicional si es necesario
       },
       error: (error) => {
         console.error('Error al crear factura:', error);

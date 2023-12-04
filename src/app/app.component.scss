@@ -1,21 +1,25 @@
 .container {
     max-width: 800px;
     margin: 20px auto;
+    text-align: center;
 }
 
 .info-1 {
     text-align: left;
-    padding: 10px;
-    color: black;
+    margin-top: 70px;
+
 }
 
-.info-1 strong {
-    background-color: #31b965;
-    padding: 5px;
-}
-
-.buttons {
-    margin-bottom: 20px;
+.info-2{
+        background-color: #4CAF50;
+        color: white;
+        padding: 5px;
+        margin-left: 10px;
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 5px;
+        
+        
 }
 
 table {
@@ -27,7 +31,7 @@ table {
 table,
 th,
 td {
-    border: 1px solid #ddd;
+    border: 5px solid #ddd;
 }
 
 th,
@@ -37,31 +41,37 @@ td {
 }
 
 
-.container {
-    text-align: center;
-}
-
-
-.container {
-    text-align: center;
-}
-
 .text-right {
     text-align: right;
 }
 
 
+.btn-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 150px;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 10px 20px;
+    margin-left: 8px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .btn-primary {
     background-color: blue;
     color: white;
-    margin-right: 8px;
-    
 }
 
 .btn-secondary {
-    background-color: green;
+    background-color: #4CAF50;
     color: white;
 }
+ 
 
 .modal {
     position: fixed;
@@ -75,17 +85,19 @@ td {
     z-index: 1000;
     width: 300px;
 
-    .modal input {
-            margin-bottom: 10px;
-        }
+    input {
+        margin-bottom: 10px;
+    }
 
     h3 {
-        margin-bottom: 15px;
+        margin-bottom: 20px;
+        color: #333; // Color del texto
     }
 
     label {
         display: block;
         margin-bottom: 5px;
+        color: #555; 
     }
 
     select,
@@ -93,6 +105,8 @@ td {
         width: 100%;
         padding: 8px;
         margin-bottom: 15px;
+        border: 1px solid #ddd; 
+        border-radius: 4px;
     }
 
     button {
@@ -100,7 +114,43 @@ td {
         width: 100%;
         padding: 10px;
         margin-top: 10px;
-        
-        
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    // Estilo específico para el botón de agregar
+    .btn-success {
+        background-color: green;
+        color: white;
+    }
+
+    // Estilo específico para el botón de cerrar
+    .btn-danger {
+        background-color: rgba(138, 5, 5, 0.865);
+        color: white;
     }
 }
+
+// Animación de entrada para la ventana modal
+@keyframes slideIn {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+
+.label {
+    text-align: left;
+}
+
+.form-control{
+    margin-left: -10px;
+}
+
+

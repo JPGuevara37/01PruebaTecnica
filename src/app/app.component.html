@@ -3,24 +3,26 @@
 
     <!-- Encabezado -->
     <h1>BRITT PROYECTO TECNICO</h1>
-    <h2 class="mb-4">Jose Guevara</h2>
+    <h2 class="mb-4">Por: Jose Pablo Guevara Brenes</h2>
 
     <!-- Información de la factura -->
-    <div class="info-1">
-        <p><strong>Factura:</strong> {{ factura }}</p>
-        <p><strong>Fecha:</strong> {{ fecha }}</p>
-        <p><strong>Total:</strong> {{ total | currency }}</p>
+    <div class= 'info-1'>
+        <p><strong class="info-2">Factura:</strong> {{ factura }}</p>
+        <p><strong class="info-2">Fecha:</strong> {{ fecha }}</p>
+        <p><strong class="info-2">Total:</strong> {{ total | currency }}</p>
     </div>
 
     <!-- Botones para mostrar modales -->
-    <button class="btn-primary" (click)="mostrarModalFactura = true">Nueva Factura</button>
-    <button class="btn-secondary" (click)="abrirModal()">Agregar Detalle</button>
+    <div class="btn-container">
+        <button class="btn-primary" (click)="mostrarModalFactura = true">Nueva Factura</button>
+        <button class="btn-secondary" (click)="abrirModal()">Agregar Detalle</button>
+    </div>
 
     <!-- Modal Nueva Factura -->
     <div *ngIf="mostrarModalFactura" class="modal">
         <h3>Nueva Factura</h3>
-        <label>Número: <input [(ngModel)]="nuevaFacturaInfo.numero" class="form-control" /></label>
-        <label>Fecha: <input type="date" [(ngModel)]="nuevaFacturaInfo.fecha" class="form-control" /></label>
+        <label class = "label">Número: <input [(ngModel)]="nuevaFacturaInfo.numero" class="form-control" /></label>
+        <label class = "label">Fecha: <input type="date" [(ngModel)]="nuevaFacturaInfo.fecha" class="form-control" /></label>
         <button class="btn btn-success mt-2" (click)="agregarFactura()">Agregar</button>
         <button class="btn btn-danger mt-2" (click)="mostrarModalFactura = false">Cerrar</button>
     </div>
@@ -28,12 +30,12 @@
     <!-- Modal Agregar Detalle -->
     <div *ngIf="mostrarModalLinea" class="modal">
         <h3>Agregar Detalle</h3>
-        <label>Producto:
+        <label class = "label">Producto:
             <select [(ngModel)]="nuevoDetalle.producto" class="form-control">
                 <option *ngFor="let producto of productos" [value]="producto.codigoArticulo">{{ producto.descripcion }}</option>
             </select>
         </label>
-        <label>Cantidad: <input [(ngModel)]="nuevoDetalle.cantidad" class="form-control" /></label>
+        <label class = "label">Cantidad: <input [(ngModel)]="nuevoDetalle.cantidad" class="form-control" /></label>
         <button class="btn btn-success mt-2"
             (click)="agregarDetalle(1, nuevoDetalle.producto, nuevoDetalle.cantidad)">Agregar</button>
         <button class="btn btn-danger mt-2" (click)="mostrarModalLinea = false">Cerrar</button>
@@ -46,10 +48,10 @@
                 <tr>
                     <th>SKU</th>
                     <th>Producto</th>
-                    <th>Cantidad (QTY)</th>
+                    <th>(QTY)</th>
                     <th>Precio</th>
                     <th>Total</th>
-                    <th>Acciones</th>
+                    <th>BORRAR</th>
                 </tr>
             </thead>
             <tbody>
